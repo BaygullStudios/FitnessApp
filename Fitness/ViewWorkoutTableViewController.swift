@@ -1,21 +1,19 @@
 //
-//  ExercisesTableViewController.swift
+//  ViewWorkoutTableViewController.swift
 //  Fitness
 //
-//  Created by Ryan Ploetz on 9/11/16.
+//  Created by Ryan Ploetz on 9/12/16.
 //  Copyright © 2016 Baygull Studios LLC. All rights reserved.
 //
 
 import UIKit
 
 private extension Selector {
-    static let btnAddExercise = #selector(ExercisesTableViewController.btnAddExercise(_:))
+    static let btnEditWorkout = #selector(ViewWorkoutTableViewController.btnEditWorkout(_:))
 }
 
-class ExercisesTableViewController: UITableViewController {
+class ViewWorkoutTableViewController: UITableViewController {
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,10 +23,10 @@ class ExercisesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.title = "Exercises"
+        self.title = "Workout Name"
         
-        let plus = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: .btnAddExercise);
-        self.navigationItem.rightBarButtonItem = plus;
+        let edit = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: .btnEditWorkout);
+        self.navigationItem.rightBarButtonItem = edit;
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,39 +34,31 @@ class ExercisesTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func btnAddExercise(sender: UIBarButtonItem) {
-        NSLog("btnAddExercise")
-        let addExerciseViewController : UIViewController? = storyboard?.instantiateViewControllerWithIdentifier("AddExerciseViewController") as! AddExerciseViewController
-        self.navigationController?.presentViewController(addExerciseViewController!, animated: true, completion: nil)
+    func btnEditWorkout(sender : UIBarButtonItem) {
+        NSLog("btnEditWorkout")
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 0
     }
 
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ExerciseTableViewCell", forIndexPath: indexPath) as! ExerciseTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        cell.titleLabel.text = "Exercise Test 1"
+        // Configure the cell...
 
         return cell
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewExerciseViewController : ViewExerciseViewController = storyboard.instantiateViewControllerWithIdentifier("ViewExerciseViewController") as! ViewExerciseViewController
-        
-        self.navigationController?.pushViewController(viewExerciseViewController, animated: true)
-        
-    }
+    */
 
     /*
     // Override to support conditional editing of the table view.

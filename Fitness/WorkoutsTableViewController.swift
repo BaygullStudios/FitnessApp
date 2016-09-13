@@ -8,6 +8,10 @@
 
 import UIKit
 
+private extension Selector {
+    static let btnCreateWorkout = #selector(WorkoutsTableViewController.btnCreateWorkout(_:))
+}
+
 class WorkoutsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -20,11 +24,21 @@ class WorkoutsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.title = "Workouts"
+        
+        let plus = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: .btnCreateWorkout);
+        self.navigationItem.rightBarButtonItem = plus;
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func btnCreateWorkout(sender: UIBarButtonItem) {
+        NSLog("btnCreateWorkout")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let createWorkoutViewController : UIViewController? = storyboard.instantiateViewControllerWithIdentifier("CreateWorkoutViewController") as! CreateWorkoutViewController
+        self.navigationController?.pushViewController(createWorkoutViewController!, animated: true)
     }
 
     // MARK: - Table view data source
@@ -45,6 +59,14 @@ class WorkoutsTableViewController: UITableViewController {
         cell.titleLabel.text = "Test Workout"
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewWorkoutTableViewController : ViewWorkoutTableViewController = storyboard.instantiateViewControllerWithIdentifier("ViewWorkoutTableViewController") as! ViewWorkoutTableViewController
+        
+        self.navigationController?.pushViewController(viewWorkoutTableViewController, animated: true)
+        
     }
 
     /*

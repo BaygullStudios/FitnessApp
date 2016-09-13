@@ -40,7 +40,7 @@ class HomeTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 2
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -50,8 +50,6 @@ class HomeTableViewController: UITableViewController {
             cell.titleLabel.text = "Workouts"
         } else if indexPath.row == 1 {
             cell.titleLabel.text = "Exercises"
-        } else if indexPath.row == 2 {
-            cell.titleLabel.text = "Start Workout"
         }
 
         return cell
@@ -65,8 +63,6 @@ class HomeTableViewController: UITableViewController {
             topViewController = storyboard.instantiateViewControllerWithIdentifier("WorkoutsTableViewController") as! WorkoutsTableViewController
         } else if indexPath.row == 1  {
             topViewController = storyboard.instantiateViewControllerWithIdentifier("ExercisesTableViewController") as! ExercisesTableViewController
-        } else if indexPath.row == 2  {
-            topViewController = storyboard.instantiateViewControllerWithIdentifier("WorkoutsTableViewController") as! WorkoutsTableViewController
         } else {
             topViewController = nil
         }
